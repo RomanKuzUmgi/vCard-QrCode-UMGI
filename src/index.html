@@ -1,232 +1,416 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
+
 <title>VCARD QRCode generator</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+<!-- <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" /> -->
+
+<meta name = "viewport" content = "width = device-width, initial-scale = 1.0, max-scale=1.0"> 
+<link rel = "stylesheet" href = "https://fonts.googleapis.com/icon?family=Material+Icons">  
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
 <script type="text/javascript" src="jquery.min.js"></script>
 <script type="text/javascript" src="QrCodeNew.js"></script>
 <script type="text/javascript" src="canvas-toBlob.js"></script>
 <script type="text/javascript" src=FileSaver.js></script>
 
-<script type="text/javascript">
-
-//------ новая библиотека генерации vcard ------ https://github.com/konstantin-nizhinskiy/qr-code-and-vcard ------------------
-
-function generateQRCode(){
-
- var startNode="BEGIN:VCARD"+"\n"+"VERSION:3.0"+"\n";
- var endNode="END:VCARD";
-
- startNode+="FN:"+firstName.value.trim()+" "+lastName.value.trim()+"\n";
- startNode+="N:"+lastName.value.trim()+";"+firstName.value.trim()+"\n";
- startNode+="EMAIL:"+email.value.trim()+"\n";
- startNode+="ORG:"+org.value.trim()+"\n";
- startNode+="TITLE:"+title.value.trim()+"\n";
- startNode+="URL:"+url.value.trim()+"\n";
- startNode+="TEL;TYPE=HOME,VOICE:"+phoneNo.value.trim()+"\n";
- startNode+="Corporate LinkedIn:"+CorpLinkedIn.value.trim()+"\n";
- startNode+="Personal LinkedIn:"+PersonalLinkedIn.value.trim()+"\n";
- startNode+="Corporate Facebook:"+CorpFacebook.value.trim()+"\n";
- startNode+="Corporate presentation:"+Presentationl.value.trim()+"\n";
-startNode+=endNode;
-
-
-        var  testCard= {
-            version: '3.0',
-            lastName: lastName.value.trim(),
-            middleName: '',
-            firstName: firstName.value.trim(),
-            organization: org.value.trim(),
-            workPhone: phoneNo.value.trim(),
-            title: title.value.trim(),
-            email: email.value.trim(),
-            url: url.value.trim(),
-            url2: CorpLinkedIn.value.trim(),
-            url3: PersonalLinkedIn.value.trim(),
-            url4: CorpFacebook.value.trim(),
-            url5: Presentationl.value.trim(),
-
-            socialUrls: {
-                facebook: '',
-                linkedIn: '',
-                twitter: '',
-                skype:''
-            }
-
-    
-        };
-
-  	document.getElementById('qrImage').innerHTML = qrCode.createVCardQr(testCard, {typeNumber: 15, cellSize: 4, typeElement: 'createImg'}); 
-
-
-/*
-
-            homeAddress: {
-                label: 'Home Address',
-                street: '12b Bekhterevsky lane',
-                city: 'Kyiv',
-                postalCode: '04053',
-                countryRegion: 'Ukraine'
-            },
-
-            socialUrls: {
-                facebook: CorpLinkedIn.value.trim(),
-                linkedIn: linkedIn.value.trim(),
-                twitter: CorpFacebook.value.trim(),
-                skype:otherSocial.value.trim()
-            }
-
-<label for="org">Address:</label><input type="text" id="address" value="12b Bekhterevsky lane" size="40"> <br>
-<label for="org">City:</label><input type="text" id="city" value="Kyiv" size="40"> <br>
-<label for="org">Country:</label><input type="text" id="country" value="Ukraine" size="40"> <br>
-<label for="org">Zip Code: </label><input type="text" id="zipCode" value="04053" size="40"> <br>
-<br>
-
-*/
-
- this.qrImage.style.display ='inline';
- this.vcard.value=startNode;
- this.vcard.style.display ='inline';
- this.vcardDiv.style.display ='inline';
- this.but2.style.display ='inline';
- this.but3.style.display ='inline';
-
-}
-
-
-function SaveQRCode(TypeCode){
-
-        var  testCard= {
-            version: '3.0',
-            lastName: lastName.value.trim(),
-            middleName: '',
-            firstName: firstName.value.trim(),
-            organization: org.value.trim(),
-            workPhone: phoneNo.value.trim(),
-            title: title.value.trim(),
-            email: email.value.trim(),
-            url: url.value.trim(),
-            url2: CorpLinkedIn.value.trim(),
-            url3: PersonalLinkedIn.value.trim(),
-            url4: CorpFacebook.value.trim(),
-            url5: Presentationl.value.trim(),
-
-            homeAddress: {
-                label: 'Home Address',
-                street: '12b Bekhterevsky lane',
-                city: 'Kyiv',
-                postalCode: '04053',
-                countryRegion: 'Ukraine'
-            },
-
-            socialUrls: {
-                facebook: '',
-                linkedIn: '',
-                twitter: '',
-                skype:''
-            }
-
-    
-        };
-
-
-var myString = qrCode.createVCardQr(testCard, {typeNumber: 15, cellSize: 4, typeElement: TypeCode}); 
-
-  if (TypeCode === 'createImg') {
-
-    saveAs( data2blob(myString), "QrCode.gif" );
-
-  } else {
-
-    saveAs( data2blob(myString), "QrCode.svg" );
-
-  };
-
-
-}
-
-
-function data2blob(data, isBase64) {
-  var chars = "";
-
-  if (isBase64)
-    chars = atob(data);
-  else
-    chars = data;
-
-  var bytes = new Array(chars.length);
-  for (var i = 0; i < chars.length; i++) {
-    bytes[i] = chars.charCodeAt(i);
-  }
-
-  var blob = new Blob([new Uint8Array(bytes)]);
-  return blob;
-}
-
-</script>
-
 <style>
-DIV{
-	color:royalblue;
-}
-H3
-{
-	color:PURPLE;
-}
-label{
-	display: block;
-	font-weight: bold;
-	font-size: 0.929em;
-}
+
+  /* label color */
+  .input-field label {
+     color: #311b92;
+   }
+   /* label focus color */
+   .input-field input:focus + label {
+     color: #311b92;
+   }
+   /* label underline focus color */
+   .input-field input:focus {
+     border-bottom: 1px solid #311b92;
+     box-shadow: 0 1px 0 0 #311b92;
+   }
+   /* valid color */
+   .input-field input.valid {
+     border-bottom: 1px solid #311b92;
+     box-shadow: 0 1px 0 0 #311b92;
+   }
+   /* invalid color */
+   .input-field input.invalid {
+     border-bottom: 1px solid #d50000 ;
+     box-shadow: 0 1px 0 0 #d50000 ;
+   }
+   /* icon prefix focus color */
+   .input-field .prefix.active {
+     color: #311b92;
+   }
+
 </style>
 
 <body>
-<form method="post">
-<center>
-<h2>Generate QR Code for your Digital Business VCARD</h2></center>
-<div style="float:left;width:30%;padding-left:20%;">
-<label for="firstName">First Name : </label>
-<input type="text" id="firstName" value="" size="40">  <br>
-<label for="lastName">Last Name : </label> <input type="text" id="lastName" value="" size="40"> <br>
-<label for="lastName">Phone No :</label> <input type="text" id="phoneNo" value="" size="40"> <br>
-<label for="org">Organisation:</label> <input type="text" id="org" value="umgi" size="40"> <br>
-<label for="org">Job Title:</label><input type="text" id="title" value="" size="20"> <br>
-<label for="org">Website:</label><input type="text" id="url" value="https://www.umgi.ua" size="40"> <br>
-<label for="org">Email:</label><input type="text" id="email" value="@umgi.ua" size="40"> <br>
-<br><br>
-<label for="org">Corporate LinkedIn: </label><input type="text" id="CorpLinkedIn" value="https://www.linkedin.com/company/umgi" size="40"> <br>
-<label for="org">Personal LinkedIn: </label><input type="text" id="PersonalLinkedIn" value="" size="40"> <br>
-<label for="org">Corporate Facebook: </label><input type="text" id="CorpFacebook" value="https://www.facebook.com/umgi.ua" size="40"> <br>
-<label for="org">Corporate presentation:</label><input type="text" id="Presentationl" value="https://umgi.ua/ext-content/corp.presentations/UMGI_presentation.pdf" size="40"> <br>
+  <form method="post">
+  <div class="container"> 
 
-<br><br>
-<input type="button" value="Embed VCARD in QRCode Format" onclick="javascript:generateQRCode();"><br>
-<br>
+    <div class="row"> <!--- Группа с колонками --->
+      <div class="col s12"> <!--- Заголовок во всю ширину --->
+        <center><span class="deep-purple-text text-darken-4"><h4><b>Generate QR Code for your Digital Business VCARD</b></h4></span></center>
+      </div>
+      <div class="col s12 l6"> <!--- Информация слева --->
 
-<div style="display:none;" id="but2">
-<input type="button" value="Save File as SVG" onclick="javascript:SaveQRCode('createSvg');">
-</div>
-<br><br>
+        <div class="row"> 
+
+          <div class="input-field col s12">
+            <i class="material-icons prefix">business</i>
+            <select id="org" class="validate" required>
+              <option disabled selected>Choose organisation</option>
+              <option>UMGI</option>
+              <option>Recycling Solutions</option>
+              <option>Intech</option>
+            </select>
+            <label>Organisation:</label>
+          </div>
+
+          <div class="input-field col s12 l5">
+            <i class="material-icons prefix">account_circle</i>
+            <input id="firstName" type="text" class="validate" required>
+            <label for="firstName">First Name:</label>
+          </div>
+
+          <div class="input-field col s12 l7">
+            <input id="lastName" type="text" class="validate" required>
+            <label for="lastName">Last Name:</label>
+          </div>
+
+          <div class="input-field col s12 l5">
+            <i class="material-icons prefix">phone</i>
+            <input id="phoneNo" type="tel" class="validate" required>
+            <label for="phoneNo">Phone No:</label>
+          </div>
+          <div class="input-field col s12 l7">
+            <i class="material-icons prefix">email</i>
+            <input id="email" type="email" class="validate">
+            <label for="email">Email:</label>
+          </div>
+
+        </div> 
+
+        <div class="row"> 
+          <div class="input-field col s12 l12">
+            <i class="material-icons prefix">work</i>
+            <input id="title" type="text" class="validate">
+            <label for="title">Job Title:</label>
+          </div>
+          <div class="input-field col s12 l12">
+            <i class="material-icons prefix">public</i>
+            <input id="url" type="text" class="validate">
+            <label for="url">Website:</label>
+          </div>
+
+          <div class="input-field col s12 l12">
+            <i class="material-icons prefix">group</i>
+            <input id="CorpLinkedIn" type="text" class="validate">
+            <label for="CorpLinkedIn">Corporate LinkedIn:</label>
+          </div>
+
+          <div class="input-field col s12 l12">
+            <i class="material-icons prefix">group</i>
+            <input id="PersonalLinkedIn" type="text" class="validate">
+            <label for="PersonalLinkedIn">Personal LinkedIn:</label>
+          </div>
+
+          <div class="input-field col s12 l12">
+            <i class="material-icons prefix">group</i>
+            <input id="CorpFacebook" type="text" class="validate">
+            <label for="CorpFacebook">Corporate Facebook:</label>
+          </div>
+
+          <div class="input-field col s12 l12">
+            <i class="material-icons prefix">picture_as_pdf</i>
+            <input id="Presentationl" type="text" class="validate">
+            <label for="Presentationl">Corporate presentation:</label>
+          </div>        
+        
+        </div> 
+
+      </div> <!--- Информация слева конец --->
+      <div class="col s12 l6"> <!--- Информация справа --->
+      
+        <div align="center" style="display:none;" id="vcardDiv">
+          <span class="red-text text-accent-4"><h5><b>VCARD Created Successfully !!!!!!</b></h5></span>
+
+          <div class="row" align="center"> 
+            <div class="input-field col s12 l10 offset-l1">
+              <textarea id="vcard" class="materialize-textarea"></textarea>
+              <!--- <label class="active" for="vcard">Textarea</label> --->
+            </div>
+          </div>
+
+          <span class="deep-purple-text text-darken-4"><h5><b>VCARD Embedded QR Code Image</b></h5></span>
+          
+          <div class="row" align="center">
+            <div id='qrImage' style='display:none;'></div> 
+          </div>
+        </div>
+      
+      </div> <!--- Информация справа конец --->
+      <div class="col s12"> <!--- Кнопки во всю ширину --->
+
+        <hr align="center" size="2" color="#e0e0e0" />
+
+        <div class="row" align="center"> <!--- Строка с кнопками внизу  --->
+          <div class="row col s12 l4">
+            <a id="btn01" class="waves-effect waves-light btn blue darken-3 col s12" onclick="javascript:generateQRCode();"><i class="material-icons left">contact_phone</i>Embed VCARD in QRCode Format</a>  
+          </div>  
+          <div class="row col s12 l4">
+            <a id="btn02" class="waves-effect waves-light btn blue darken-3 col s12" onclick="javascript:SaveQRCode('createSvg');"><i class="material-icons left">get_app</i>Save File as SVG</a>  
+          </div>  
+          <div class="row col s12 l4">
+            <a id="btn03" class="waves-effect waves-light btn blue darken-3 col s12" onclick="javascript:TryAgain();"><i class="material-icons left">replay</i>Try again</a>  
+          </div>
+        </div>
+
+      </div>      
+    </div> <!--- Закрытие группы с колонками --->
+
+  </div> <!--- Закрытие контейнера --->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+  <script type="text/javascript">
+
+    document.getElementById("btn02").setAttribute("disabled","disabled");
+    document.getElementById("btn03").setAttribute("disabled","disabled");
+
+    document.addEventListener('DOMContentLoaded', function() {
+
+      var elems = document.querySelectorAll('select');
+      var instances = M.FormSelect.init(elems);
+
+      M.updateTextFields();
+
+      document.getElementById("org").addEventListener("change", inputFields);
+
+    });
+
+    //---------------------------------
+    function inputFields(){
+
+      var orgName = document.getElementById("org").value;
+
+      //this.firstName.value="";
+      //document.getElementById("lastName").value = orgName;
+
+      switch (orgName) {
+        case "UMGI":
+          document.getElementById("email").value = "@umgi.ua";
+          document.getElementById("url").value = "https://www.umgi.ua";
+          document.getElementById("CorpLinkedIn").value = "https://www.linkedin.com/company/umgi";
+          //document.getElementById("PersonalLinkedIn").value="";
+          document.getElementById("CorpFacebook").value = "https://www.facebook.com/umgi.ua";
+          document.getElementById("Presentationl").value = "https://umgi.ua/ext-content/corp.presentations/UMGI_presentation.pdf";
+          break;
+        case "Recycling Solutions":
+          document.getElementById("email").value = "@re-solutions.com.ua";
+          document.getElementById("url").value = "https://re-solutions.com.ua/";
+          document.getElementById("CorpLinkedIn").value = "https://www.linkedin.com/company/umgi";
+          //document.getElementById("PersonalLinkedIn").value="";
+          document.getElementById("CorpFacebook").value = "https://www.facebook.com/umgi.ua";
+          document.getElementById("Presentationl").value = "https://umgi.ua/ext-content/corp.presentations/UMGI_presentation.pdf";
+          break;
+        case "Intech":
+          document.getElementById("email").value = "@intech-ukraine.com";
+          document.getElementById("url").value = "https://www.intech-ukraine.com/";
+          document.getElementById("CorpLinkedIn").value = "https://www.linkedin.com/company/umgi";
+          //document.getElementById("PersonalLinkedIn").value="";
+          document.getElementById("CorpFacebook").value = "https://www.facebook.com/intech4ever/";
+          document.getElementById("Presentationl").value = "https://umgi.ua/ext-content/corp.presentations/UMGI_presentation.pdf";
+          break;
+        default:
+
+      }
+
+      M.updateTextFields();
+
+    };
+
+    //------ новая библиотека генерации vcard ------ https://github.com/konstantin-nizhinskiy/qr-code-and-vcard ------------------
+
+    function generateQRCode(){
+
+      var startNode="BEGIN:VCARD"+"\n"+"VERSION:3.0"+"\n";
+      var endNode="END:VCARD";
+
+      startNode+="FN:"+firstName.value.trim()+" "+lastName.value.trim()+"\n";
+      startNode+="N:"+lastName.value.trim()+";"+firstName.value.trim()+"\n";
+      startNode+="EMAIL:"+email.value.trim()+"\n";
+      startNode+="ORG:"+org.value.trim()+"\n";
+      startNode+="TITLE:"+title.value.trim()+"\n";
+      startNode+="URL:"+url.value.trim()+"\n";
+      startNode+="TEL;TYPE=HOME,VOICE:"+phoneNo.value.trim()+"\n";
+      startNode+="Corporate LinkedIn:"+CorpLinkedIn.value.trim()+"\n";
+      startNode+="Personal LinkedIn:"+PersonalLinkedIn.value.trim()+"\n";
+      startNode+="Corporate Facebook:"+CorpFacebook.value.trim()+"\n";
+      startNode+="Corporate presentation:"+Presentationl.value.trim()+"\n";
+      startNode+=endNode;
 
 
-<div style="display:none;" id="but3">
-  <input type="button" value="Save File as GIF" onclick="javascript:SaveQRCode('createImg');">
-</div>
-<br>
+        var  testCard= {
+            version: '3.0',
+            lastName: lastName.value.trim(),
+            middleName: '',
+            firstName: firstName.value.trim(),
+            organization: org.value.trim(),
+            workPhone: phoneNo.value.trim(),
+            title: title.value.trim(),
+            email: email.value.trim(),
+            url: url.value.trim(),
+            url2: CorpLinkedIn.value.trim(),
+            url3: PersonalLinkedIn.value.trim(),
+            url4: CorpFacebook.value.trim(),
+            url5: Presentationl.value.trim(),
 
-</div>
-<div style="float:right;width:40%;padding-right:10%;">
-<div style="display:none;" id="vcardDiv">
-<h3>VCARD Created Successfully !!!!!! </h3>
-<textarea rows="13" cols="40" style='display:none;' id="vcard" border="2">
-</textarea><BR>
-<H3>VCARD Embedded QR Code Image</H3> </div>
-<div id='qrImage' style='display:none;'>
-</div>
+            socialUrls: {
+                facebook: '',
+                linkedIn: '',
+                twitter: '',
+                skype:''
+            }
+
+        };
+
+      /*          homeAddress: {
+                      label: 'Home Address',
+                      street: '12b Bekhterevsky lane',
+                      city: 'Kyiv',
+                      postalCode: '04053',
+                      countryRegion: 'Ukraine'
+                  },
+                  socialUrls: {
+                      facebook: CorpLinkedIn.value.trim(),
+                      linkedIn: linkedIn.value.trim(),
+                      twitter: CorpFacebook.value.trim(),
+                      skype:otherSocial.value.trim()
+                  }
+      <label for="org">Address:</label><input type="text" id="address" value="12b Bekhterevsky lane" size="40"> <br>
+      <label for="org">City:</label><input type="text" id="city" value="Kyiv" size="40"> <br>
+      <label for="org">Country:</label><input type="text" id="country" value="Ukraine" size="40"> <br>
+      <label for="org">Zip Code: </label><input type="text" id="zipCode" value="04053" size="40"> <br>
+      <br>
+      */
+
+      document.getElementById('qrImage').innerHTML = qrCode.createVCardQr(testCard, {typeNumber: 15, cellSize: 4, typeElement: 'createImg'}); 
+
+      this.qrImage.style.display ='inline';
+      this.vcard.value=startNode;
+      this.vcard.style.display ='inline';
+      this.vcardDiv.style.display ='inline';
+
+      //this.but2.style.display ='inline';
+      //this.but1.style.display ='none';
+      //this.but4.style.display ='inline';
+
+      document.getElementById("btn01").setAttribute("disabled","disabled");
+
+      document.getElementById("btn02").removeAttribute("disabled");
+      document.getElementById("btn03").removeAttribute("disabled");
+
+      //this.but3.style.display ='inline';
+      //this.firstName.value="test!!!";
+
+      //$('#textarea1').val('New Text');
+      M.textareaAutoResize($('#vcard'));
+
+    }
+
+    function TryAgain(){
+
+      this.firstName.value="";
+      this.lastName.value="";
+      this.phoneNo.value="";
+      document.getElementById("org").value = "Choose organisation";
+      //this.org.value="Choose organisation";
+      this.title.value="";
+      this.email.value="";
+      this.url.value="";
+      this.CorpLinkedIn.value="";
+      this.PersonalLinkedIn.value="";
+      this.CorpFacebook.value="";
+      this.Presentationl.value="";
+
+      var elems = document.querySelectorAll('select');
+      var instances = M.FormSelect.init(elems);
+      M.updateTextFields();
 
 
-</div>
+      this.qrImage.style.display ='none';
+      this.vcard.value='';
+      this.vcard.style.display ='none';
+      this.vcardDiv.style.display ='none';
+      //this.but2.style.display ='none';
+      //this.but1.style.display ='inline';
+      //this.but4.style.display ='none';
+
+      document.getElementById("btn02").setAttribute("disabled","disabled");
+      document.getElementById("btn03").setAttribute("disabled","disabled");
+      document.getElementById("btn01").removeAttribute("disabled");
+
+    }
+
+    function SaveQRCode(TypeCode){
+
+      var  testCard= {
+        version: '3.0',
+        lastName: lastName.value.trim(),
+        middleName: '',
+        firstName: firstName.value.trim(),
+        organization: org.value.trim(),
+        workPhone: phoneNo.value.trim(),
+        title: title.value.trim(),
+        email: email.value.trim(),
+        url: url.value.trim(),
+        url2: CorpLinkedIn.value.trim(),
+        url3: PersonalLinkedIn.value.trim(),
+        url4: CorpFacebook.value.trim(),
+        url5: Presentationl.value.trim(),
+
+        socialUrls: {
+          facebook: '',
+          linkedIn: '',
+          twitter: '',
+          skype:''
+        }
+      };
+
+      var myString = qrCode.createVCardQr(testCard, {typeNumber: 15, cellSize: 4, typeElement: TypeCode}); 
+
+      if (TypeCode === 'createImg') {
+        saveAs( data2blob(myString), "QrCode.gif" );
+      } else {
+        saveAs( data2blob(myString), "QrCode.svg" );
+      };
+    }
+
+
+    function data2blob(data, isBase64) {
+      var chars = "";
+
+      if (isBase64)
+        chars = atob(data);
+      else
+        chars = data;
+
+      var bytes = new Array(chars.length);
+      for (var i = 0; i < chars.length; i++) {
+        bytes[i] = chars.charCodeAt(i);
+      }
+
+      var blob = new Blob([new Uint8Array(bytes)]);
+      return blob;
+    }
+
+
+  </script>
+
 </body>
+
 </html>
