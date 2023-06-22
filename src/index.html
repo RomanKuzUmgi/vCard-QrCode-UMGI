@@ -57,12 +57,12 @@
       </div>
       <div class="col s12 l6"> <!--- Информация слева --->
 
-        <div class="row"> 
+        <!--- <div class="row"> --->
 
           <div class="input-field col s12">
             <i class="material-icons prefix">business</i>
             <select id="org" class="validate" required>
-              <option disabled selected>Choose organisation</option>
+              <option disabled selected><b>Choose organisation</b></option>
               <option>UMGI</option>
               <option>Recycling Solutions</option>
               <option>Intech</option>
@@ -81,25 +81,30 @@
             <label for="lastName">Last Name:</label>
           </div>
 
-          <div class="input-field col s12 l5">
+          <div class="input-field col s12 l12">
             <i class="material-icons prefix">phone</i>
             <input id="phoneNo" type="tel" class="validate" required>
             <label for="phoneNo">Phone No:</label>
           </div>
-          <div class="input-field col s12 l7">
+
+          <div class="input-field col s12 l12">
             <i class="material-icons prefix">email</i>
             <input id="email" type="email" class="validate">
             <label for="email">Email:</label>
           </div>
 
-        </div> 
-
-        <div class="row"> 
           <div class="input-field col s12 l12">
             <i class="material-icons prefix">work</i>
             <input id="title" type="text" class="validate">
             <label for="title">Job Title:</label>
           </div>
+
+        <!--- </div> --->
+      </div> <!--- Информация слева конец --->
+
+      <div class="col s12 l6"> <!--- Информация справа --->
+        <!--- <div class="row"> --->
+
           <div class="input-field col s12 l12">
             <i class="material-icons prefix">public</i>
             <input id="url" type="text" class="validate">
@@ -130,34 +135,15 @@
             <label for="Presentationl">Corporate presentation:</label>
           </div>        
         
-        </div> 
+        <!--- </div>  --->
 
-      </div> <!--- Информация слева конец --->
-      <div class="col s12 l6"> <!--- Информация справа --->
-      
-        <div align="center" style="display:none;" id="vcardDiv">
-          <span class="red-text text-accent-4"><h5><b>VCARD Created Successfully !!!!!!</b></h5></span>
-
-          <div class="row" align="center"> 
-            <div class="input-field col s12 l10 offset-l1">
-              <textarea id="vcard" class="materialize-textarea"></textarea>
-              <!--- <label class="active" for="vcard">Textarea</label> --->
-            </div>
-          </div>
-
-          <span class="deep-purple-text text-darken-4"><h5><b>VCARD Embedded QR Code Image</b></h5></span>
-          
-          <div class="row" align="center">
-            <div id='qrImage' style='display:none;'></div> 
-          </div>
-        </div>
-      
       </div> <!--- Информация справа конец --->
+
       <div class="col s12"> <!--- Кнопки во всю ширину --->
 
-        <hr align="center" size="2" color="#e0e0e0" />
+        <!--- <hr align="center" size="2" color="#e0e0e0" /> --->
 
-        <div class="row" align="center"> <!--- Строка с кнопками внизу  --->
+        <!--- <div class="row" align="center"> ---> <!--- Строка с кнопками внизу  --->
           <div class="row col s12 l4">
             <a id="btn01" class="waves-effect waves-light btn blue darken-3 col s12" onclick="javascript:generateQRCode();"><i class="material-icons left">contact_phone</i>Embed VCARD in QRCode Format</a>  
           </div>  
@@ -167,9 +153,40 @@
           <div class="row col s12 l4">
             <a id="btn03" class="waves-effect waves-light btn blue darken-3 col s12" onclick="javascript:TryAgain();"><i class="material-icons left">replay</i>Try again</a>  
           </div>
-        </div>
+        <!--- </div> --->
 
-      </div>      
+        <!--- <hr align="center" size="2" color="#e0e0e0" /> --->
+
+      </div>  <!--- Кнопки во всю ширину конец --->
+
+      <div style="display:none;" id="vcardDiv">
+
+        <div class="col s12 l12"> <!--- Заголовок во всю ширину --->
+          <center><span class="red-text text-accent-4"><h5><b>VCARD Created Successfully!</b></h5></span></center>
+        </div> <!--- Заголовок во всю ширину конец --->
+
+        <div class="col s12 l6"> <!---  --->
+
+          <div class="row" align="center"> 
+            <div class="input-field col s12 l10 offset-l1">
+              <textarea id="vcard" class="materialize-textarea"></textarea>
+              <!--- <label class="active" for="vcard">Textarea</label> --->
+            </div>
+          </div>        
+
+        </div> <!---  --->
+        <div class="col s12 l6"> <!---  --->
+
+          <!--- <span class="deep-purple-text text-darken-4"><h5><b>VCARD Embedded QR Code Image</b></h5></span> --->
+            
+          <div class="row" align="center">
+            <div id='qrImage' style='display:none;'></div> 
+          </div>        
+
+        </div> <!---  --->
+      </div>
+
+    
     </div> <!--- Закрытие группы с колонками --->
 
   </div> <!--- Закрытие контейнера --->
@@ -211,7 +228,7 @@
           break;
         case "Recycling Solutions":
           document.getElementById("email").value = "@re-solutions.com.ua";
-          document.getElementById("url").value = "https://re-solutions.com.ua/";
+          document.getElementById("url").value = "https://www.re-solutions.com.ua/";
           document.getElementById("CorpLinkedIn").value = "https://www.linkedin.com/company/umgi";
           //document.getElementById("PersonalLinkedIn").value="";
           document.getElementById("CorpFacebook").value = "https://www.facebook.com/umgi.ua";
@@ -309,7 +326,7 @@
       //this.but1.style.display ='none';
       //this.but4.style.display ='inline';
 
-      document.getElementById("btn01").setAttribute("disabled","disabled");
+      //document.getElementById("btn01").setAttribute("disabled","disabled");
 
       document.getElementById("btn02").removeAttribute("disabled");
       document.getElementById("btn03").removeAttribute("disabled");
@@ -352,7 +369,7 @@
 
       document.getElementById("btn02").setAttribute("disabled","disabled");
       document.getElementById("btn03").setAttribute("disabled","disabled");
-      document.getElementById("btn01").removeAttribute("disabled");
+      //document.getElementById("btn01").removeAttribute("disabled");
 
     }
 
