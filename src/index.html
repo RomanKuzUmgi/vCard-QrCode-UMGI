@@ -59,15 +59,22 @@
 
         <!--- <div class="row"> --->
 
-          <div class="input-field col s12">
+          <div class="input-field col s12" style="display: inline;" id="orgDiv">
             <i class="material-icons prefix">business</i>
-            <select id="org" class="validate" required>
+            <select id="org" class="validate" required> <!-- onchange = "javascript:generateQRCode();"  -->
               <option disabled selected><b>Choose organisation</b></option>
               <option>UMGI</option>
               <option>Recycling Solutions</option>
               <option>Intech</option>
+              <option>Custom value!</option>
             </select>
             <label>Organisation:</label>
+          </div>
+
+          <div class="input-field col s12 l12" style="display: none;" id="orgDiv1">
+            <i class="material-icons prefix">business</i>
+            <input id="org1" type="text" class="validate">
+            <label for="org1">Organisation:</label>
           </div>
 
           <div class="input-field col s12 l5">
@@ -242,11 +249,27 @@
           document.getElementById("CorpFacebook").value = "https://www.facebook.com/intech4ever/";
           document.getElementById("Presentationl").value = "https://umgi.ua/ext-content/corp.presentations/UMGI_presentation.pdf";
           break;
+        case "Custom value!":
+          document.getElementById("email").value = "";
+          document.getElementById("url").value = "https://";
+          document.getElementById("CorpLinkedIn").value = "https://www.linkedin.com/";
+          //document.getElementById("PersonalLinkedIn").value="";
+          document.getElementById("CorpFacebook").value = "https://www.facebook.com/";
+          document.getElementById("Presentationl").value = "";
+          break;
+
         default:
 
       }
 
       M.updateTextFields();
+
+      if (orgName == "Custom value!") {
+        document.getElementById("orgDiv").style.display = "none"
+        document.getElementById("orgDiv1").style.display = "inline"
+
+        //.setAttribute("disabled","disabled");
+      }          
 
     };
 
@@ -260,8 +283,9 @@
 
       if (org.value.trim()== "Choose organisation") {
         orgName = ""
-      }
-      else {
+      } else if (org.value.trim()== "Custom value!") {
+        orgName = org1.value.trim()
+      } else {
         orgName = org.value.trim()
       }
 
