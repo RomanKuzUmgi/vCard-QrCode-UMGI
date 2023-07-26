@@ -256,6 +256,9 @@
           //document.getElementById("PersonalLinkedIn").value="";
           document.getElementById("CorpFacebook").value = "https://www.facebook.com/";
           document.getElementById("Presentationl").value = "";
+
+          document.getElementById("orgDiv").style.display = "none";
+          document.getElementById("orgDiv1").style.display = "inline";
           break;
 
         default:
@@ -264,12 +267,12 @@
 
       M.updateTextFields();
 
-      if (orgName == "Custom value!") {
+      /*if (orgName == "Custom value!") {
         document.getElementById("orgDiv").style.display = "none"
         document.getElementById("orgDiv1").style.display = "inline"
 
         //.setAttribute("disabled","disabled");
-      }          
+      }  */        
 
     };
 
@@ -377,6 +380,7 @@
       this.lastName.value="";
       this.phoneNo.value="";
       document.getElementById("org").value = "Choose organisation";
+      document.getElementById("org1").value = "";
       //this.org.value="Choose organisation";
       this.title.value="";
       this.email.value="";
@@ -385,6 +389,9 @@
       this.PersonalLinkedIn.value="";
       this.CorpFacebook.value="";
       this.Presentationl.value="";
+
+      document.getElementById("orgDiv").style.display = "inline";
+      document.getElementById("orgDiv1").style.display = "none";
 
       var elems = document.querySelectorAll('select');
       var instances = M.FormSelect.init(elems);
