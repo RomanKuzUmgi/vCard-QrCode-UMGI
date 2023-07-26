@@ -256,11 +256,19 @@
 
       var startNode="BEGIN:VCARD"+"\n"+"VERSION:3.0"+"\n";
       var endNode="END:VCARD";
+      var orgName = "";
+
+      if (org.value.trim()== "Choose organisation") {
+        orgName = ""
+      }
+      else {
+        orgName = org.value.trim()
+      }
 
       startNode+="FN:"+firstName.value.trim()+" "+lastName.value.trim()+"\n";
       startNode+="N:"+lastName.value.trim()+";"+firstName.value.trim()+"\n";
       startNode+="EMAIL:"+email.value.trim()+"\n";
-      startNode+="ORG:"+org.value.trim()+"\n";
+      startNode+="ORG:"+orgName+"\n";
       startNode+="TITLE:"+title.value.trim()+"\n";
       startNode+="URL:"+url.value.trim()+"\n";
       startNode+="TEL;TYPE=HOME,VOICE:"+phoneNo.value.trim()+"\n";
@@ -276,7 +284,7 @@
             lastName: lastName.value.trim(),
             middleName: '',
             firstName: firstName.value.trim(),
-            organization: org.value.trim(),
+            organization: orgName,
             workPhone: phoneNo.value.trim(),
             title: title.value.trim(),
             email: email.value.trim(),
