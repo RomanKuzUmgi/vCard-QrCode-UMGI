@@ -63,9 +63,23 @@
             <i class="material-icons prefix">business</i>
             <select id="org" class="validate" required> <!-- onchange = "javascript:generateQRCode();"  -->
               <option disabled selected><b>Choose organisation</b></option>
-              <option>UMGI</option>
-              <option>Recycling Solutions</option>
+              <option>Arnox</option>
               <option>Intech</option>
+              <option>Inwire</option>
+              <option>Inwire Metalürji</option>
+              <option>Inwire in Ukraine</option>
+              <option>PortInvest</option>
+              <option>Recycling Solutions</option>
+              <option>Regen</option>
+              <option>Ukrainian Mineral Fertilizers</option>
+              <option>UMGI</option>
+              <option>UMGI Poland</option>
+              <option>VESCO</option>
+              <option>VESCO Balkans</option>
+              <option>VESCO CLAYS Italy</option>
+              <option>VESCO CLAYS Spain</option>
+              <option>VESCO Ukraine</option>
+              <option>КВВП</option>
               <option>Custom value!</option>
             </select>
             <label>Organisation:</label>
@@ -221,10 +235,98 @@
 
       var orgName = document.getElementById("org").value;
 
-      //this.firstName.value="";
-      //document.getElementById("lastName").value = orgName;
-
       switch (orgName) {
+
+        case "Arnox":
+          document.getElementById("email").value = "@arnox.com.ua";
+          document.getElementById("url").value = "https://arnox.com.ua/";
+          document.getElementById("CorpLinkedIn").value = "";
+          //document.getElementById("PersonalLinkedIn").value="";
+          document.getElementById("CorpFacebook").value = "";
+          document.getElementById("Presentationl").value = "";
+          break;
+
+        case "Intech":
+          document.getElementById("email").value = "@intech-ukraine.com";
+          document.getElementById("url").value = "https://www.intech-ukraine.com/";
+          document.getElementById("CorpLinkedIn").value = "https://www.linkedin.com/company/intech-ukraine";
+          //document.getElementById("PersonalLinkedIn").value="";
+          document.getElementById("CorpFacebook").value = "https://www.facebook.com/intech4ever/";
+          document.getElementById("Presentationl").value = "";
+          break;
+
+        case "Inwire":
+          document.getElementById("email").value = "@inwire.com.ua";
+          document.getElementById("url").value = "";
+          document.getElementById("CorpLinkedIn").value = "https://www.linkedin.com/company/inwire-ukraine/";
+          //document.getElementById("PersonalLinkedIn").value="";
+          document.getElementById("CorpFacebook").value = "";
+          document.getElementById("Presentationl").value = "";
+          break;
+
+        case "Inwire Metalürji":       
+          document.getElementById("email").value = "@inwire.com.tr";
+          document.getElementById("url").value = "";
+          document.getElementById("CorpLinkedIn").value = "https://www.linkedin.com/showcase/i%CC%87nwi%CC%87re-metal%C3%BCrji%CC%87-sanayi%CC%87-ve-ti%CC%87caret-li%CC%87mi%CC%87ted-%C5%9Fi%CC%87rketi%CC%87";
+          //document.getElementById("PersonalLinkedIn").value="";
+          document.getElementById("CorpFacebook").value = "";
+          document.getElementById("Presentationl").value = "";
+          break;
+
+        case "Inwire in Ukraine":
+          document.getElementById("email").value = "@inwire.com.ua";
+          document.getElementById("url").value = "";
+          document.getElementById("CorpLinkedIn").value = "https://www.linkedin.com/showcase/inwireua";
+          //document.getElementById("PersonalLinkedIn").value="";
+          document.getElementById("CorpFacebook").value = "";
+          document.getElementById("Presentationl").value = "";
+          break;
+
+        case "PortInvest":
+          document.getElementById("email").value = "@portinvest-logistic.com";
+          document.getElementById("url").value = "https://portinvest-logistic.com/";
+          document.getElementById("CorpLinkedIn").value = "https://www.linkedin.com/company/portinvest/about/";
+          //document.getElementById("PersonalLinkedIn").value="";
+          document.getElementById("CorpFacebook").value = "";
+          document.getElementById("Presentationl").value = "";
+          break;
+
+        case "Recycling Solutions":
+          document.getElementById("email").value = "@re-solutions.com.ua";
+          document.getElementById("url").value = "https://www.re-solutions.com.ua/";
+          document.getElementById("CorpLinkedIn").value = "https://www.linkedin.com/company/recycling-solutions-ua";
+          //document.getElementById("PersonalLinkedIn").value="";
+          document.getElementById("CorpFacebook").value = "https://www.facebook.com/recyclingsolutionsua";
+          document.getElementById("Presentationl").value = "";
+          break;
+
+        case "Regen":
+          document.getElementById("email").value = "@regen.com.ua";
+          document.getElementById("url").value = "https://re-solutions.com.ua/our-direction/kogeneratsiya/";
+          document.getElementById("CorpLinkedIn").value = "";
+          //document.getElementById("PersonalLinkedIn").value="";
+          document.getElementById("CorpFacebook").value = "";
+          document.getElementById("Presentationl").value = "";
+          break;
+
+        case "Ukrainian Mineral Fertilizers":
+          document.getElementById("email").value = "@umf.com.ua";
+          document.getElementById("url").value = "https://umf.com.ua/";
+          document.getElementById("CorpLinkedIn").value = "https://www.linkedin.com/company/ukrainian-mineral-fertilizers/";
+          //document.getElementById("PersonalLinkedIn").value="";
+          document.getElementById("CorpFacebook").value = "https://www.facebook.com/UkrainianMineralFertilizers/";
+          document.getElementById("Presentationl").value = "";
+          break;
+
+        case "UMGI Poland":
+          document.getElementById("email").value = "@umgi.pl";
+          document.getElementById("url").value = "https://umgi.ua/en/";
+          document.getElementById("CorpLinkedIn").value = "https://www.linkedin.com/company/umgi";
+          //document.getElementById("PersonalLinkedIn").value="";
+          document.getElementById("CorpFacebook").value = "https://www.facebook.com/umgi.ua";
+          document.getElementById("Presentationl").value = "https://umgi.ua/ext-content/corp.presentations/UMGI_presentation.pdf";
+          break;
+
         case "UMGI":
           document.getElementById("email").value = "@umgi.ua";
           document.getElementById("url").value = "https://www.umgi.ua";
@@ -233,22 +335,70 @@
           document.getElementById("CorpFacebook").value = "https://www.facebook.com/umgi.ua";
           document.getElementById("Presentationl").value = "https://umgi.ua/ext-content/corp.presentations/UMGI_presentation.pdf";
           break;
-        case "Recycling Solutions":
-          document.getElementById("email").value = "@re-solutions.com.ua";
-          document.getElementById("url").value = "https://www.re-solutions.com.ua/";
-          document.getElementById("CorpLinkedIn").value = "https://www.linkedin.com/company/umgi";
+
+        case "VESCO":
+          document.getElementById("email").value = "@vesco.com.ua";
+          document.getElementById("url").value = "https://www.vesco.com.ua/en";
+          document.getElementById("CorpLinkedIn").value = "https://www.linkedin.com/company/vesco-international-limited";
           //document.getElementById("PersonalLinkedIn").value="";
-          document.getElementById("CorpFacebook").value = "https://www.facebook.com/umgi.ua";
-          document.getElementById("Presentationl").value = "https://umgi.ua/ext-content/corp.presentations/UMGI_presentation.pdf";
+          document.getElementById("CorpFacebook").value = "https://www.facebook.com/";
+          document.getElementById("Presentationl").value = "";
           break;
-        case "Intech":
-          document.getElementById("email").value = "@intech-ukraine.com";
-          document.getElementById("url").value = "https://www.intech-ukraine.com/";
-          document.getElementById("CorpLinkedIn").value = "https://www.linkedin.com/company/umgi";
+
+        case "VESCO CLAYS Italy":
+          document.getElementById("email").value = "@vesco-italy.com";
+          document.getElementById("url").value = "https://www.vesco.com.ua/it";
+          document.getElementById("CorpLinkedIn").value = "https://www.linkedin.com/showcase/vesco-italy";
           //document.getElementById("PersonalLinkedIn").value="";
-          document.getElementById("CorpFacebook").value = "https://www.facebook.com/intech4ever/";
-          document.getElementById("Presentationl").value = "https://umgi.ua/ext-content/corp.presentations/UMGI_presentation.pdf";
+          document.getElementById("CorpFacebook").value = "";
+          document.getElementById("Presentationl").value = "";
+          break; 
+
+        case "VESCO Balkans":
+          document.getElementById("email").value = "@vesco-romania.com";
+          document.getElementById("url").value = "https://www.vesco.com.ua/en";
+          document.getElementById("CorpLinkedIn").value = "https://www.linkedin.com/showcase/vesco-balkans";
+          //document.getElementById("PersonalLinkedIn").value="";
+          document.getElementById("CorpFacebook").value = "";
+          document.getElementById("Presentationl").value = "";
+          break; 
+
+        case "VESCO CLAYS Spain":
+          document.getElementById("email").value = "@vesco-spain.com";
+          document.getElementById("url").value = "https://www.vesco.com.ua/es";
+          document.getElementById("CorpLinkedIn").value = "https://www.linkedin.com/showcase/vesco-spain";
+          //document.getElementById("PersonalLinkedIn").value="";
+          document.getElementById("CorpFacebook").value = "https://www.facebook.com/vesco.spain/";
+          document.getElementById("Presentationl").value = "";
+          break; 
+
+        case "VESCO Poland":
+          document.getElementById("email").value = "@vesco-poland.com";
+          document.getElementById("url").value = "https://www.vesco.com.ua/es";
+          document.getElementById("CorpLinkedIn").value = "";
+          //document.getElementById("PersonalLinkedIn").value="";
+          document.getElementById("CorpFacebook").value = "";
+          document.getElementById("Presentationl").value = "";
+          break; 
+
+        case "VESCO Ukraine":
+          document.getElementById("email").value = "@vesco.com.ua";
+          document.getElementById("url").value = "https://www.vesco.com.ua/";
+          document.getElementById("CorpLinkedIn").value = "https://www.linkedin.com/showcase/vesco-ukraine/";
+          //document.getElementById("PersonalLinkedIn").value="";
+          document.getElementById("CorpFacebook").value = "https://www.facebook.com/vescocompany/";
+          document.getElementById("Presentationl").value = "";
+          break; 
+
+        case "КВВП":
+          document.getElementById("email").value = "@kvvp.com.ua";
+          document.getElementById("url").value = "https://kvvp.com.ua/";
+          document.getElementById("CorpLinkedIn").value = "";
+          //document.getElementById("PersonalLinkedIn").value="";
+          document.getElementById("CorpFacebook").value = "https://www.facebook.com/krivbassvzryvprom";
+          document.getElementById("Presentationl").value = "";
           break;
+
         case "Custom value!":
           document.getElementById("email").value = "";
           document.getElementById("url").value = "https://";
