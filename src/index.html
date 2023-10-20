@@ -91,22 +91,28 @@
             <label for="org1">Organisation:</label>
           </div>
 
-          <div class="input-field col s12 l5">
+          <div class="input-field col s12 l6">
             <i class="material-icons prefix">account_circle</i>
             <input id="firstName" type="text" class="validate" required>
             <label for="firstName">First Name:</label>
           </div>
 
-          <div class="input-field col s12 l7">
+          <div class="input-field col s12 l6">
             <input id="lastName" type="text" class="validate" required>
             <label for="lastName">Last Name:</label>
           </div>
 
-          <div class="input-field col s12 l12">
+          <div class="input-field col s12 l6">
             <i class="material-icons prefix">phone</i>
             <input id="phoneNo" type="tel" class="validate" required>
             <label for="phoneNo">Phone No:</label>
           </div>
+
+          <div class="input-field col s12 l6">
+            <input id="phoneNo2" type="tel" class="validate">
+            <label for="phoneNo2">Phone 2 No (optional):</label>
+          </div>
+
 
           <div class="input-field col s12 l12">
             <i class="material-icons prefix">email</i>
@@ -448,7 +454,8 @@
       startNode+="ORG:"+orgName+"\n";
       startNode+="TITLE:"+title.value.trim()+"\n";
       startNode+="URL:"+url.value.trim()+"\n";
-      startNode+="TEL;TYPE=HOME,VOICE:"+phoneNo.value.trim()+"\n";
+      startNode+="TEL;TYPE=WORK,VOICE:"+phoneNo.value.trim()+"\n";
+      startNode+="TEL;TYPE=OTHER:"+phoneNo2.value.trim()+"\n";
       startNode+="Corporate LinkedIn:"+CorpLinkedIn.value.trim()+"\n";
       startNode+="Personal LinkedIn:"+PersonalLinkedIn.value.trim()+"\n";
       startNode+="Corporate Facebook:"+CorpFacebook.value.trim()+"\n";
@@ -463,6 +470,7 @@
             firstName: firstName.value.trim(),
             organization: orgName,
             workPhone: phoneNo.value.trim(),
+            otherPhone: phoneNo2.value.trim(),            
             title: title.value.trim(),
             email: email.value.trim(),
             url: url.value.trim(),
@@ -529,6 +537,7 @@
       this.firstName.value="";
       this.lastName.value="";
       this.phoneNo.value="";
+      this.phoneNo2.value="";
       document.getElementById("org").value = "Choose organisation";
       document.getElementById("org1").value = "";
       //this.org.value="Choose organisation";
@@ -571,6 +580,7 @@
         firstName: firstName.value.trim(),
         organization: org.value.trim(),
         workPhone: phoneNo.value.trim(),
+        otherPhone: phoneNo2.value.trim(),
         title: title.value.trim(),
         email: email.value.trim(),
         url: url.value.trim(),
