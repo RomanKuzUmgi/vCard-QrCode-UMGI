@@ -526,7 +526,7 @@
       <br>
       */
 
-      document.getElementById('qrImage').innerHTML = qrCode.createVCardQr(testCard, {typeNumber: 15, cellSize: 4, typeElement: 'createImg'}); 
+      document.getElementById('qrImage').innerHTML = qrCode.createVCardQr(testCard, {typeNumber: 18, cellSize: 4, typeElement: 'createImg'}); 
 
       this.qrImage.style.display ='inline';
       this.vcard.value=startNode;
@@ -615,7 +615,7 @@
         }
       };
 
-      var myString = qrCode.createVCardQr(testCard, {typeNumber: 15, cellSize: 4, typeElement: TypeCode}); 
+      var myString = qrCode.createVCardQr(testCard, {typeNumber: 18, cellSize: 4, typeElement: TypeCode}); 
 
       if (TypeCode === 'createImg') {
         saveAs( data2blob(myString), "QrCode.gif" );
