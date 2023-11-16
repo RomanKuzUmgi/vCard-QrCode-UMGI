@@ -2340,6 +2340,10 @@ QrCode.prototype.createQr = function (options) {
  * @param vCard.socialUrls.[custom] {string} - Other social
  * @param vCard.source {string} - By default, if this property is not grouped with other properties it specifies the pronunciation of the FN property of the vCard object
  * @param vCard.rev {string} - A timestamp for the last time the vCard was updated.
+ * @param vCard.item1Label {string}
+ * @param vCard.item1Name {string} 
+ * @param vCard.item2Label {string}
+ * @param vCard.item2Name {string} 
  *
  * @return {string}
  *
@@ -2397,6 +2401,23 @@ QrCode.prototype.createVCard = function (vCard) {
     if (vCard.anniversary) {
         formattedVCardString += 'ANNIVERSARY:' + vCard.anniversary + nl();
     }
+
+    if (vCard.item1Label) {
+        formattedVCardString += 'item1.X-ABLabel:' + vCard.item1Label + nl();
+    }    
+
+    if (vCard.item1Name) {
+        formattedVCardString += 'item1.X-ABRELATEDNAMES' + encodingPrefix + ';type=pref:' + vCard.item1Name + nl();
+    }   
+    
+    if (vCard.item2Label) {
+        formattedVCardString += 'item2.X-ABLabel:' + vCard.item2Label + nl();
+    }    
+
+    if (vCard.item2Name) {
+        formattedVCardString += 'item2.X-ABRELATEDNAMES' + encodingPrefix + ';type=pref:' + vCard.item2Name + nl();
+    }       
+
 
     if (vCard.email) {
         if (!Array.isArray(vCard.email)) {
