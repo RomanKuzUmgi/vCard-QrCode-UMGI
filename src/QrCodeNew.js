@@ -2436,7 +2436,7 @@ QrCode.prototype.createVCard = function (vCard) {
         );
     }
 
-    if (vCard.workEmail) {
+/*    if (vCard.workEmail) {
         if (!Array.isArray(vCard.workEmail)) {
             vCard.workEmail = new Array(vCard.workEmail);
         }
@@ -2448,6 +2448,23 @@ QrCode.prototype.createVCard = function (vCard) {
                     formattedVCardString += 'EMAIL' + encodingPrefix + ';type=WORK,INTERNET:' + e(address) + nl();
                 } else {
                     formattedVCardString += 'EMAIL' + encodingPrefix + ';WORK;INTERNET:' + e(address) + nl();
+                }
+            }
+        );
+    }
+*/
+    if (vCard.workEmail) {
+        if (!Array.isArray(vCard.workEmail)) {
+            vCard.workEmail = new Array(vCard.workEmail);
+        }
+        vCard.workEmail.forEach(
+            function (address) {
+                if (majorVersion >= 4) {
+                    formattedVCardString += 'EMAIL' + encodingPrefix + ':' + e(address) + nl();
+                } else if (majorVersion >= 3 && majorVersion < 4) {
+                    formattedVCardString += 'EMAIL' + encodingPrefix + ':' + e(address) + nl();
+                } else {
+                    formattedVCardString += 'EMAIL' + encodingPrefix + ':' + e(address) + nl();
                 }
             }
         );
