@@ -591,6 +591,16 @@
 
     function SaveQRCode(TypeCode){
 
+      var orgName = "";
+
+      if (org.value.trim()== "Choose organisation") {
+        orgName = ""
+      } else if (org.value.trim()== "Custom value!") {
+        orgName = org1.value.trim()
+      } else {
+        orgName = org.value.trim()
+      }
+      
       var  testCard= {
         version: '3.0',
         lastName: lastName.value.trim(),
